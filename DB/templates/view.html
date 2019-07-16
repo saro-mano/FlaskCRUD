@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            }
+
+            #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            }
+
+            #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+            #customers tr:hover {background-color: #ddd;}
+
+            #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+            }
+      </style>
+    <title>View</title>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <b>DB connectivity using Flask</b>
+            <a href = "register" class="active">Create</a>
+            <a href = "view">View</a>
+            <a href = "edit">Edit</a>
+            <a href = "#">Delete</a>
+        </nav>
+    </div>
+    <body>
+            <div class="container">
+                    <form class = 'form-control-lg' method="POST">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    Enter the name to be found
+                                </div>
+                                <div class='col-md-3'>
+                                    <input type="text" name="name">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                        <button type="submit" class="btn btn-primary">Fetch</button>
+                                </div>
+                            </div>
+                        </form>
+            </div><br><br><br><br><br><br><br>
+            <div class="container">
+              <span>{{count}} entries found</span>
+            <table id="customers">
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                    </tr>
+                  {% for name in result %}
+                    <tr>
+                      <td> {{ name[0] }} </th>
+                      <td> {{  name[1] }} </td>
+                   </tr>
+                  {% endfor %}
+              </table>
+            </div>
+    </body>
+</html>
