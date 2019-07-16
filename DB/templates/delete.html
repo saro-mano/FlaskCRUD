@@ -26,9 +26,14 @@
             color: white;
             }
 
+            .inp{
+            background-color: #c5c7c9;
+            border: none;
+            cursor: not-allowed;
+            }
             .alert {
             padding: 20px;
-            background-color: #b3b823;
+            background-color: #e8583f;
             color: white;
             }
 
@@ -46,14 +51,8 @@
             .closebtn:hover {
             color: black;
             }
-
-            .inp{
-            background-color: #c5c7c9;
-            border: none;
-            cursor: not-allowed;
-            }
       </style>
-    <title>Edit</title>
+    <title>Delete</title>
 </head>
 <body>
     <div class="container">
@@ -67,10 +66,10 @@
     </div>
     <body>
             <div class="container">
-                    <form class = 'form-control-lg' method="POST">
+                    <form class = 'form-control-lg' action = "editdelete" method="POST">
                             <div class="row">
                                 <div class="col-lg-4">
-                                    Enter the name to be found
+                                    Enter the name to be deleted
                                 </div>
                                 <div class='col-md-3'>
                                     <input type="text" name="name">
@@ -83,42 +82,40 @@
                                 </div>
                             </div>
                         </form>
-            </div><br><br><br><br><br>
-
-              {% for name in result %}
+            </div><<br><br><br><br><br><br>
+            {% for name in result %}
+            <div class="container">
+            <form class = 'form-control-lg' action = 'delete' method="POST">
+                    <div class="row">
+                        <div class="col-md-1">
+                            Name
+                        </div>
+                        <div class='col-md-3'>
+                            <input class="inp" type="text" name="name" value="{{name[0]}}" readonly>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                            <div class="col-md-1">
+                                Mail
+                            </div>
+                            <div class='col-md-3'>
+                                <input type="text" name="email" value="{{name[1]}}">
+                            </div>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              </div>
+              <br><br><br><br><br><br><hr>
+              {% endfor %}
+              {% if success == "success" %}
               <div class="container">
-              <form class = 'form-control-lg' action = 'realedit' method="POST">
-                      <div class="row">
-                          <div class="col-md-1">
-                              Name
-                          </div>
-                          <div class='col-md-3'>
-                              <input class="inp" type="text" name="name" value="{{name[0]}}" readonly>
-                          </div>
-                      </div>
-                      <br>
-                      <div class="row">
-                              <div class="col-md-1">
-                                  Mail
-                              </div>
-                              <div class='col-md-3'>
-                                  <input type="text" name="email" value="{{name[1]}}">
-                              </div>
-                      </div>
-                      <br>
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
+                <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <strong>Done!</strong> The user has been deleted successfully.
                 </div>
-                <br><br><br><br><br><br><hr>
-                {% endfor %}
-                {% if success == "success" %}
-                <div class="container">
-                  <div class="alert">
-                      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                      <strong>Done!</strong> The user has been altered successfully.
-                  </div>
-                </div>
-                {% endif%}
-
+              </div>
+              {% endif%}
     </body>
 </html>

@@ -68,5 +68,31 @@ def realedit():
         return render_template('edit.html',success = "success")
     return render_template('edit.html')
 
+@app.route("/delete", methods = ['GET','POST'])
+def delete():
+    if request.method == 'POST':
+        details = request.form
+        name = details['name']
+        mail = details['email']
+        cur = mysql.connection.cursor()
+        cur.execute("DELETE FROM info where name = %s and email = %s",(name, mail, ))
+        #cur.execute("UPDATE info set email = %s where name =%s", (mail, name))
+        mysql.connection.commit()
+        cur.close()
+        return render_template('delete.html',success = "success")
+    return render_template('delete.html')
+
+@app.route("/editdelete", methods = ['GET','POST'])
+def editdelete():
+        if request.method == 'POST':
+            details = request.form
+            n = details['name']
+            cur = mysql.connection.cursor()
+            sql_select_query = """select * from info where name = %s"""
+            cur.execute(sql_select_query, (n, ))
+            result = cur.fetchall()
+            return render_template('delete.html',result = result)
+        return render_template('delete.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
