@@ -57,20 +57,22 @@
                             </div>
                         </form>
             </div><br><br><br><br><br><br><br>
-            <div class="container">
-              <span>{{count}} entries found</span>
-            <table id="customers">
-                    <tr>
-                      <th>Name</th>
-                      <th>Email</th>
-                    </tr>
-                  {% for name in result %}
-                    <tr>
-                      <td> {{ name[0] }} </th>
-                      <td> {{  name[1] }} </td>
-                   </tr>
-                  {% endfor %}
-              </table>
-            </div>
+            {% if success == "success" %}
+              <div class="container">
+                <span>{{count}} entries found</span>
+                <table id="customers">
+                      <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                      </tr>
+                    {% for name in result %}
+                      <tr>
+                        <td> {{ name[0] }} </th>
+                        <td> {{  name[1] }} </td>
+                     </tr>
+                    {% endfor %}
+                </table>
+              </div>
+            {% endif %}
     </body>
 </html>

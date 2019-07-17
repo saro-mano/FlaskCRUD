@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            }
+
+            #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            }
+
+            #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+            #customers tr:hover {background-color: #ddd;}
+
+            #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+            }
+
+            .alert {
+            padding: 20px;
+            background-color: #b3b823;
+            color: white;
+            }
+
+            .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            }
+
+            .closebtn:hover {
+            color: black;
+            }
+
+            .inp{
+            background-color: #c5c7c9;
+            border: none;
+            cursor: not-allowed;
+            }
+
+            .welcome{
+              font-size:30px;
+              font-style: normal;
+              font-family: monospace;
+              text-shadow: 10px 10px 10px;
+            }
+      </style>
+    <title>Edit</title>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <b>DB connectivity using Flask</b>
+            <a href = "register" class="active">Create</a>
+            <a href = "view">View</a>
+            <a href = "edit">Edit</a>
+            <a href = "delete">Delete</a>
+        </nav>
+    </div>
+    <body>
+      <div class="container">
+        <div class="jumbotron text-center">
+            <span class="welcome">Welcome!</span>
+        </div>
+      </div>
+    </body>
+</html>

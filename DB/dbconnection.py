@@ -10,6 +10,10 @@ app.config['MYSQL_DB'] = 'user'
 
 mysql = MySQL(app)
 
+@app.route('/')
+def home():
+    return render_template('home.html')
+
 @app.route("/register", methods = ['GET','POST'])
 def register():
     if request.method == 'POST':
@@ -39,7 +43,7 @@ def view():
         cur.execute(sql_select_query, (n, ))
 
         count = cur.fetchone()
-        return render_template('view.html',result = result,count=count[0])
+        return render_template('view.html',result = result,count=count[0],success = "success")
     return render_template('view.html')
 
 @app.route("/edit", methods = ['GET','POST'])
